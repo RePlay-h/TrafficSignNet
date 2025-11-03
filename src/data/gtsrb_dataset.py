@@ -11,6 +11,7 @@ import numpy as np
 import os
 import yaml
 
+
 from loguru import logger
 from rich.console import Console
 from rich.progress import Progress
@@ -65,7 +66,7 @@ class GTSRBDataset(Dataset):
         img_tensor = augmented["image"]
 
         return img_tensor, label
-    
+
 def get_albumentations_transform(img_size: int = 64, is_train = True) -> A.Compose:
     if is_train:
         return A.Compose([
@@ -83,7 +84,7 @@ def get_albumentations_transform(img_size: int = 64, is_train = True) -> A.Compo
             A.Normalize(mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225)),
             ToTensorV2()
         ])
-    
+       
 def get_dataloaders() -> tuple[DataLoader, DataLoader]:
     
     console.rule("[bold blue] Step 2: Creating dataloaders")
