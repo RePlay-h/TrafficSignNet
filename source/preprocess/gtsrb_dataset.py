@@ -15,6 +15,8 @@ from loguru import logger
 from rich.console import Console
 from rich.progress import Progress
 
+console = Console()
+
 class GTSRBDataset(Dataset):
     '''
     Dataset for GTRSB to read images from folder 
@@ -22,7 +24,6 @@ class GTSRBDataset(Dataset):
 
     def __init__(self, root, transform):
         
-        console = Console()
         logger.info("Save classes paths and labels")
 
         self.root = root
@@ -85,6 +86,8 @@ def get_albumentations_transform(img_size: int = 64, is_train = True) -> A.Compo
     
 def get_dataloaders() -> tuple[DataLoader, DataLoader]:
     
+    console.rule("[bold blue] Step 2: Creating dataloaders")
+
     # read parameters
     params = yaml.safe_load(open('params.yaml'))['preprocess']
     root = params['out_root']
@@ -107,8 +110,3 @@ def get_dataloaders() -> tuple[DataLoader, DataLoader]:
     val_loader = DataLoader(val_ds, batch_size=batch_size, shuffle=False, num_workers=num_workers, pin_memory=True)
 
     return train_loader, val_loader
-
-if __name__ == '__main__':
-    logger.info("Start gtsrb_dataset.py")
-    tr, da = get_dataloaders()
-    logger.success("Complete gtsrb_dataset.py")

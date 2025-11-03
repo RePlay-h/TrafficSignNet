@@ -11,6 +11,8 @@ from rich.progress import Progress
 def prepare_gtsrb():
 
     console = Console()
+
+    console.rule("[bold blue] Step 1: Loading and splitting the dataset")
     
     # read parameters
     params = yaml.safe_load(open('params.yaml'))['preprocess']
@@ -62,11 +64,11 @@ def prepare_gtsrb():
             train_imgs, val_images = train_test_split(imgs, test_size=val_size, random_state=101)
 
             # copy every image in data/processed
-            for fname in train_imgs:
-                shutil.copy(os.path.join(class_path, fname), f"{out_root}/train/{class_folder}/{fname}")
+            #for fname in train_imgs:
+                #shutil.copy(os.path.join(class_path, fname), f"{out_root}/train/{class_folder}/{fname}")
 
-            for fname in val_images:
-                shutil.copy(os.path.join(class_path, fname), f"{out_root}/val/{class_folder}/{fname}")
+            #for fname in val_images:
+                #shutil.copy(os.path.join(class_path, fname), f"{out_root}/val/{class_folder}/{fname}")
 
             progress.advance(task)
         
@@ -74,6 +76,4 @@ def prepare_gtsrb():
 
 
 if __name__ == "__main__":
-    logger.info(f"Start prepare_gtsrb.py")
     prepare_gtsrb()
-    logger.success(f"Complete prepare_gtsrb.py")
