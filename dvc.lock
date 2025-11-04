@@ -1,0 +1,19 @@
+schema: '2.0'
+stages:
+  preprocess:
+    cmd: python src/data/prepare_gtsrb.py
+    deps:
+    - path: params.yaml
+      hash: md5
+      md5: 158393ea31db103014d8da8e643f2690
+      size: 136
+    - path: src/data/prepare_gtsrb.py
+      hash: md5
+      md5: ab8f5db1833a72e5fc34b7ff2e381ee3
+      size: 2549
+    outs:
+    - path: data/processed
+      hash: md5
+      md5: d751713988987e9331980363e24189ce.dir
+      size: 0
+      nfiles: 0
