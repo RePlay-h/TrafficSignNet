@@ -1,0 +1,4 @@
+dvc stage add -n preprocess \
+-d src/data/prepare_gtsrb.py -d params.yaml \
+-o data/processed \
+python src/data/prepare_gtsrb.py
