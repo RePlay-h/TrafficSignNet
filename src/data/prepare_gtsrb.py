@@ -20,6 +20,7 @@ def prepare_gtsrb():
     raw_root = params['raw_root']
     out_root = params['out_root']
     val_size = params['val_size']
+    seed = params['seed']
 
     # start logging the preparing process
     logger.info(f"Train-Validation split, val_size={val_size}") 
@@ -61,14 +62,14 @@ def prepare_gtsrb():
             imgs = os.listdir(class_path)
 
             # split images in current class
-            train_imgs, val_images = train_test_split(imgs, test_size=val_size, random_state=101)
+            train_imgs, val_images = train_test_split(imgs, test_size=val_size, random_state=seed)
 
             # copy every image in data/processed
-            #for fname in train_imgs:
-                #shutil.copy(os.path.join(class_path, fname), f"{out_root}/train/{class_folder}/{fname}")
+            for fname in train_imgs:
+                shutil.copy(os.path.join(class_path, fname), f"{out_root}/train/{class_folder}/{fname}")
 
-            #for fname in val_images:
-                #shutil.copy(os.path.join(class_path, fname), f"{out_root}/val/{class_folder}/{fname}")
+            for fname in val_images:
+                shutil.copy(os.path.join(class_path, fname), f"{out_root}/val/{class_folder}/{fname}")
 
             progress.advance(task)
         

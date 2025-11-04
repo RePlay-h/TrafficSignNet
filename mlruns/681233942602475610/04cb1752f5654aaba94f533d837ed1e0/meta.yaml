@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/m4rce/Documents/Programming/TrafficSignNet/mlruns/681233942602475610/04cb1752f5654aaba94f533d837ed1e0/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '681233942602475610'
+lifecycle_stage: active
+run_id: 04cb1752f5654aaba94f533d837ed1e0
+run_name: mercurial-dog-430
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762271492629
+status: 1
+tags: []
+user_id: m4rce

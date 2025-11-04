@@ -5,15 +5,45 @@ stages:
     deps:
     - path: params.yaml
       hash: md5
-      md5: 158393ea31db103014d8da8e643f2690
-      size: 136
+      md5: e866d71cc1c1f5f79c18bd729ba84921
+      size: 192
     - path: src/data/prepare_gtsrb.py
       hash: md5
-      md5: ab8f5db1833a72e5fc34b7ff2e381ee3
-      size: 2549
+      md5: 11f30da88a04b2f3aa7e3890818b5644
+      size: 2573
     outs:
     - path: data/processed
       hash: md5
-      md5: d751713988987e9331980363e24189ce.dir
-      size: 0
-      nfiles: 0
+      md5: 75a7ee823167ed85fad042d969b444e9.dir
+      size: 235642986
+      nfiles: 39209
+  train:
+    cmd: python src/train.py
+    deps:
+    - path: data/processed/
+      hash: md5
+      md5: 75a7ee823167ed85fad042d969b444e9.dir
+      size: 235642986
+      nfiles: 39209
+    - path: src/data/gtsrb_dataset.py
+      hash: md5
+      md5: 713cf13a9ffb2c0ae1a7d76f58430cc6
+      size: 4146
+    - path: src/models/TrafficSignCNN.py
+      hash: md5
+      md5: f1464e5a0f9ff29856af188768728528
+      size: 2099
+    - path: src/train.py
+      hash: md5
+      md5: 8c77ddc910d312b76b184621af7138b4
+      size: 3511
+    params:
+      params.yaml:
+        train:
+          seed: 101
+          batch_size: 64
+    outs:
+    - path: models/best_model.pth
+      hash: md5
+      md5: 4512d994294b8cb05c43152e0388dad9
+      size: 38265122

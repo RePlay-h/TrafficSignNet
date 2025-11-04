@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/m4rce/Documents/Programming/TrafficSignNet/mlruns/681233942602475610/78aea9face0c40ab8734826cc4387ce7/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '681233942602475610'
+lifecycle_stage: active
+run_id: 78aea9face0c40ab8734826cc4387ce7
+run_name: ambitious-robin-64
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762259574493
+status: 1
+tags: []
+user_id: m4rce

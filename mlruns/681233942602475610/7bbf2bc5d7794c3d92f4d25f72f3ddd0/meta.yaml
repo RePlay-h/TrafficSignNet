@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/m4rce/Documents/Programming/TrafficSignNet/mlruns/681233942602475610/7bbf2bc5d7794c3d92f4d25f72f3ddd0/artifacts
+end_time: 1762263289149
+entry_point_name: ''
+experiment_id: '681233942602475610'
+lifecycle_stage: active
+run_id: 7bbf2bc5d7794c3d92f4d25f72f3ddd0
+run_name: receptive-cub-545
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762263152042
+status: 4
+tags: []
+user_id: m4rce

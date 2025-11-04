@@ -28,16 +28,16 @@ class GTSRBDataset(Dataset):
         logger.info("Save classes paths and labels")
 
         self.root = root
-        self.transfomr = transform
+        self.transform = transform
         
         # get sorted classes names
-        classes = sorted([d for d in os.listdir(self.root) if os.path.isdir(os.path.join(self.root, d))])
+        classes = sorted([int(d) for d in os.listdir(self.root) if os.path.isdir(os.path.join(self.root, d))])
+        classes = list(map(str, classes))
 
         self.class_to_idx = {cls_name: idx for idx, cls_name in enumerate(classes)}
-
+        
         self.paths = []
         self.labels = []
-        
         with Progress() as progress:
             task = progress.add_task("Saving image paths and class labels", total=len(classes))
             for cls_name in classes:
@@ -45,12 +45,17 @@ class GTSRBDataset(Dataset):
                 cls_idx = self.class_to_idx[cls_name]
                 cls_folder = os.path.join(self.root, cls_name)
 
+                #print(cls_folder)
+                #print(os.listdir('data/processed'))
                 for fname in sorted(os.listdir(cls_folder)):
-                    self.paths.append(os.path.join(cls_folder, fname))
-                    self.labels.append(cls_idx)
+                    
+                    if fname.lower().endswith((".png", ".jpg", ".jpeg", ".ppm")):
+                        self.paths.append(os.path.join(cls_folder, fname))
+                        self.labels.append(cls_idx)
                 progress.advance(task)
 
-    
+        if len(self.paths) == 0:
+            raise RuntimeError(f"No images found in {self.root}. Check dataset path.")
     def __len__(self):
         return len(self.paths)
 

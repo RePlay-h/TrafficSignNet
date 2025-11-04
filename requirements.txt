@@ -1,6 +1,5 @@
-torch
-torchvision
-torchaudio
+
+
 albumentations
 opencv-python
 

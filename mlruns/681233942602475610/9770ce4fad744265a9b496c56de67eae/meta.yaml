@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/m4rce/Documents/Programming/TrafficSignNet/mlruns/681233942602475610/9770ce4fad744265a9b496c56de67eae/artifacts
+end_time: 1762264549890
+entry_point_name: ''
+experiment_id: '681233942602475610'
+lifecycle_stage: active
+run_id: 9770ce4fad744265a9b496c56de67eae
+run_name: salty-wolf-462
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762263580100
+status: 3
+tags: []
+user_id: m4rce

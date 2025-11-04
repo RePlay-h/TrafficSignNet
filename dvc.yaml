@@ -2,7 +2,18 @@ stages:
   preprocess:
     cmd: python src/data/prepare_gtsrb.py
     deps:
-      - params.yaml
-      - src/data/prepare_gtsrb.py
+    - params.yaml
+    - src/data/prepare_gtsrb.py
     outs:
-      - data/processed
+    - data/processed
+  train:
+    cmd: python src/train.py
+    deps:
+    - data/processed/
+    - src/data/gtsrb_dataset.py
+    - src/models/TrafficSignCNN.py
+    - src/train.py
+    params:
+    - train
+    outs:
+    - models/best_model.pth

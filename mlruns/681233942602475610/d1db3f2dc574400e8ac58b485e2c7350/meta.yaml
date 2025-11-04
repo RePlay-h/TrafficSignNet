@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/m4rce/Documents/Programming/TrafficSignNet/mlruns/681233942602475610/d1db3f2dc574400e8ac58b485e2c7350/artifacts
+end_time: 1762276550404
+entry_point_name: ''
+experiment_id: '681233942602475610'
+lifecycle_stage: active
+run_id: d1db3f2dc574400e8ac58b485e2c7350
+run_name: monumental-zebra-839
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762275474604
+status: 3
+tags: []
+user_id: m4rce

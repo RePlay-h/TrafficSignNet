@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/m4rce/Documents/Programming/TrafficSignNet/mlruns/681233942602475610/b630395d3b5d452296a5b4ba00902a23/artifacts
+end_time: 1762263451391
+entry_point_name: ''
+experiment_id: '681233942602475610'
+lifecycle_stage: active
+run_id: b630395d3b5d452296a5b4ba00902a23
+run_name: bittersweet-sheep-11
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762263350486
+status: 4
+tags: []
+user_id: m4rce
