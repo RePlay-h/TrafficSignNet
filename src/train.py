@@ -129,15 +129,13 @@ def main():
             logger.info(f"Train Loss: {train_loss:.4f}, Acc: {train_acc:.4f}")
             logger.info(f"Val Loss: {val_loss:.4f}, Acc: {val_acc:.4f}")
 
-            if val_acc > best_acc:
-                best_acc = val_acc
-                
-                torch.save(model.state_dict(), "models/best_model.pth")
-                
-                logger.info(f"New best model saved (acc={best_acc:.4f})")
-            
+            best_acc = val_acc
+
+        torch.save(model.state_dict(), "models/best_model.pth") 
+        logger.info(f"New best model saved (acc={best_acc:.4f})")  
+
         mlflow.log_metric("best_val_acc", best_acc)
-        mlflow.log_artifact("models/best_model.pth")
+        mlflow.log_artifact("models/best_model.pth", artifact_path="models")
 
         logger.success("Training has finished!")
 

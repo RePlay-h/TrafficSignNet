@@ -6,6 +6,7 @@ stages:
     - src/data/prepare_gtsrb.py
     outs:
     - data/processed
+
   train:
     cmd: python src/train.py
     deps:
@@ -17,6 +18,7 @@ stages:
     - train
     outs:
     - models/best_model.pth
+    
   evaluate:
     cmd: python src/evaluate.py
     deps:

@@ -5,8 +5,8 @@ stages:
     deps:
     - path: params.yaml
       hash: md5
-      md5: 65d96d1db9cb3662f716e2878e1901f1
-      size: 365
+      md5: 1827e1e6a6bbd40ca08b43cd011a9196
+      size: 366
     - path: src/data/prepare_gtsrb.py
       hash: md5
       md5: 11f30da88a04b2f3aa7e3890818b5644
@@ -27,16 +27,16 @@ stages:
       nfiles: 39209
     - path: src/data/gtsrb_dataset.py
       hash: md5
-      md5: 38a85ec9b1108ec5444a11850c62593a
-      size: 4233
+      md5: dc6693e4c7f34d77042ebadb3ae9eb30
+      size: 4225
     - path: src/models/TrafficSignCNN.py
       hash: md5
       md5: 12b384ade05884e338768ff1c7a102de
       size: 2117
     - path: src/train.py
       hash: md5
-      md5: 3ad0ea364247fc07c9a2eb96fa31444d
-      size: 4058
+      md5: a359cda30b0cc3da87ba6eb18e93790b
+      size: 4144
     params:
       params.yaml:
         train:
@@ -44,7 +44,7 @@ stages:
     outs:
     - path: models/best_model.pth
       hash: md5
-      md5: a75404a82043abeb36fc9544d47e97ce
+      md5: 2c4f86426409cac31f2ce7388ef9858b
       size: 38265122
   evaluate:
     cmd: python src/evaluate.py
@@ -56,14 +56,14 @@ stages:
       nfiles: 39209
     - path: models/best_model.pth
       hash: md5
-      md5: a75404a82043abeb36fc9544d47e97ce
+      md5: 2c4f86426409cac31f2ce7388ef9858b
       size: 38265122
     - path: src/evaluate.py
       hash: md5
-      md5: f093f46b8657d337ec07a4cbd354b839
-      size: 1258
+      md5: 8a3df8b45d93215c4a9e81d6018f3361
+      size: 2167
     outs:
     - path: reports/metrics.json
       hash: md5
-      md5: f9ceb6e454afa611c1ab82cd29d6e753
-      size: 7228
+      md5: 35881d157ac6ff36c1834996ef126a75
+      size: 6694
