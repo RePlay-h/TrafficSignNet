@@ -31,8 +31,8 @@ stages:
       size: 4225
     - path: src/models/TrafficSignCNN.py
       hash: md5
-      md5: 12b384ade05884e338768ff1c7a102de
-      size: 2117
+      md5: 5901cce8e180f7cb460ec065cea5f161
+      size: 2092
     - path: src/train.py
       hash: md5
       md5: a359cda30b0cc3da87ba6eb18e93790b
@@ -44,7 +44,7 @@ stages:
     outs:
     - path: models/best_model.pth
       hash: md5
-      md5: 2c4f86426409cac31f2ce7388ef9858b
+      md5: 9bae052e094767fb9d0dbbf93f0e9907
       size: 38265122
   evaluate:
     cmd: python src/evaluate.py
@@ -56,7 +56,7 @@ stages:
       nfiles: 39209
     - path: models/best_model.pth
       hash: md5
-      md5: 2c4f86426409cac31f2ce7388ef9858b
+      md5: 9bae052e094767fb9d0dbbf93f0e9907
       size: 38265122
     - path: src/evaluate.py
       hash: md5
@@ -65,5 +65,5 @@ stages:
     outs:
     - path: reports/metrics.json
       hash: md5
-      md5: 35881d157ac6ff36c1834996ef126a75
-      size: 6694
+      md5: 0032aefc0557f6e3a7d26d80ed5f8bfd
+      size: 6690
