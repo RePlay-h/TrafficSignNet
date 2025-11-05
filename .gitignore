@@ -2,3 +2,4 @@
 env
 data/raw
 .env
+__pycache__

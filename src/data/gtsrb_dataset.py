@@ -92,7 +92,7 @@ def get_albumentations_transform(img_size: int = 64, is_train = True) -> A.Compo
        
 def get_dataloaders() -> tuple[DataLoader, DataLoader]:
     
-    console.rule("[bold blue] Step 2: Creating dataloaders")
+    console.rule("[bold blue] Creating dataloaders")
 
     # read parameters
     params = yaml.safe_load(open('params.yaml'))['preprocess']

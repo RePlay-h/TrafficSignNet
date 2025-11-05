@@ -5,6 +5,7 @@ import torch.optim as optim
 
 from loguru import logger
 from rich.progress import track
+from rich.console import Console
 
 import mlflow
 import yaml
@@ -78,6 +79,9 @@ def validate(model, dataloader, criterion, device):
 def main():
     set_seed()
 
+    console = Console()
+
+    console.rule("Step 2. Training the model")
     # Connect dagshub
     dagshub.init(repo_owner='RePlay-h', repo_name='TrafficSignNet', mlflow=True)
 
@@ -134,6 +138,8 @@ def main():
             
         mlflow.log_metric("best_val_acc", best_acc)
         mlflow.log_artifact("models/best_model.pth")
+
+        logger.success("Training has finished!")
 
 if __name__ == '__main__':
     main()
