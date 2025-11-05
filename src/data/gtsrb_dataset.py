@@ -96,10 +96,11 @@ def get_dataloaders() -> tuple[DataLoader, DataLoader]:
 
     # read parameters
     params = yaml.safe_load(open('params.yaml'))['preprocess']
+    hyperparams = yaml.safe_load(open('params.yaml'))['hyperparams']
     root = params['out_root']
-    img_size = params['img_size']
-    batch_size = params['batch_size']
-    num_workers = params['num_workers']
+    img_size = hyperparams['img_size']
+    batch_size = hyperparams['batch_size']
+    num_workers = hyperparams['num_workers']
 
     logger.info("Create train and validation datasets")
     # create custom train dataset
@@ -116,3 +117,4 @@ def get_dataloaders() -> tuple[DataLoader, DataLoader]:
     val_loader = DataLoader(val_ds, batch_size=batch_size, shuffle=False, num_workers=num_workers, pin_memory=True)
 
     return train_loader, val_loader
+

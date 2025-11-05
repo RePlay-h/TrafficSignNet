@@ -9,7 +9,7 @@ class TrafficSignCNN(nn.Module):
         super().__init__()
 
         # get size of an image
-        img_size = yaml.safe_load(open('params.yaml'))['preprocess']['img_size']
+        hyperparams = yaml.safe_load(open('params.yaml'))['hyperparams']
 
         # Step 1
         self.conv1_1 = nn.Conv2d(3, 64, kernel_size=3, padding=1)
@@ -39,7 +39,7 @@ class TrafficSignCNN(nn.Module):
         self.fc1 = nn.Linear(flatten_dim, 512)
         self.bn_fc1 = nn.BatchNorm1d(512)
         self.fc_out = nn.Linear(512, num_classes)
-        self.dropout = nn.Dropout(0.5)
+        self.dropout = nn.Dropout(float(hyperparams['dropout']))
 
 
     def forward(self, x):

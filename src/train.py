@@ -14,11 +14,21 @@ import numpy as np
 from data.gtsrb_dataset import get_dataloaders
 from models.TrafficSignCNN import TrafficSignCNN
 
+import dagshub
+
+from dotenv import load_dotenv
+
 # Get train parameters
-params = yaml.safe_load(open('params.yaml'))['train']
+params = yaml.safe_load(open('params.yaml'))['hyperparams']
+dagshub_params = yaml.safe_load(open('params.yaml'))['dagshub']
+
+# Set tracking username and password for MLFlow
+load_dotenv()
+
+
 
 def set_seed():
-    seed = params['seed']
+    seed = yaml.safe_load(open('params.yaml'))['train']['seed']
 
     torch.manual_seed(seed)
     np.random.seed(seed)
@@ -68,6 +78,9 @@ def validate(model, dataloader, criterion, device):
 def main():
     set_seed()
 
+    # Connect dagshub
+    dagshub.init(repo_owner='RePlay-h', repo_name='TrafficSignNet', mlflow=True)
+
     # define device (GPU/CPU)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -77,21 +90,24 @@ def main():
     # model
     model = TrafficSignCNN(num_classes=43).to(device)
     criterion = nn.CrossEntropyLoss()
-    optimizer = optim.Adam(model.parameters(), lr=1e-4)
+    optimizer = optim.Adam(model.parameters(), lr=float(params['lr']))
 
     # MLflow setup
     mlflow.set_experiment("TrafficSignNet")
+
     with mlflow.start_run():
         mlflow.log_params({
-            "lr": 1e-4,
+            "lr": params['lr'],
             "batch_size": params['batch_size'],
-            "optimizer": "Adam"
+            "optimizer": "Adam",
+            "dropout": params['dropout'],
+            'epochs': params['epochs']
         })
 
         best_acc = 0.0
         os.makedirs("models", exist_ok=True)
 
-        for epoch in range(1, 11):
+        for epoch in range(1, int(params['epochs']) + 1):
             logger.info(f"Epoch {epoch}/10")
 
             train_loss, train_acc = train_one_epoch(model, train_loader, 
@@ -113,8 +129,11 @@ def main():
                 best_acc = val_acc
                 
                 torch.save(model.state_dict(), "models/best_model.pth")
-                mlflow.log_artifact("models/best_model.pth")
+                
                 logger.info(f"New best model saved (acc={best_acc:.4f})")
+            
+        mlflow.log_metric("best_val_acc", best_acc)
+        mlflow.log_artifact("models/best_model.pth")
 
 if __name__ == '__main__':
     main()

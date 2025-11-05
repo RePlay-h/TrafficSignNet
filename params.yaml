@@ -1,14 +1,26 @@
+
+
 preprocess:
   raw_root: data/raw
-  out_root: 'data/processed'
+  out_root: data/processed
   val_size: 0.1
+  seed: 101
+
+hyperparams:
   img_size: 64
   batch_size: 64
   num_workers: 4
-  seed: 101
+  dropout: 0.4
+  epochs: 1
+  lr: 0.0001
+
+dagshub:
+ repo_owner: RePlay-h
+ repo_name: TrafficSignNet
+ mlflow_uri: https://dagshub.com/RePlay-h/TrafficSignNet.mlflow
+
 train:
   seed: 101
-  batch_size: 64
 
 
   

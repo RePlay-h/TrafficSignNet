@@ -17,3 +17,11 @@ stages:
     - train
     outs:
     - models/best_model.pth
+  evaluate:
+    cmd: python src/evaluate.py
+    deps:
+      - src/evaluate.py
+      - models/best_model.pth
+      - data/processed
+    outs:
+      - reports/metrics.json

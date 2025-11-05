@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/m4rce/Documents/Programming/TrafficSignNet/mlruns/0/8372900d24d8434f98d556b803c0699f/artifacts
+end_time: 1762362446922
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 8372900d24d8434f98d556b803c0699f
+run_name: luminous-moose-150
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762362446837
+status: 3
+tags: []
+user_id: m4rce
